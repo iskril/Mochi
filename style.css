@@ -1,0 +1,3162 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:regular,500,600,700,800,900,700italic&display=swap);
+@font-face {
+  font-family: "SweetieBubbleGum";
+  font-display: swap;
+  src: url("./fonts/SweetieBubbleGum-Regular.woff2") format("woff2"), url("../fonts/SweetieBubbleGum-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TT Trailers Trial Black";
+  font-display: swap;
+  src: url("./fonts/TT Trailers Trial Black.woff2") format("woff2"), url("../fonts/TT Trailers Trial Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+:root {
+  --color-orange: #ffbf00;
+  --color-dark-orange: #ff7d27;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  display: inline-block;
+}
+
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+}
+
+body {
+  color: #000;
+  font-family: "Nunito";
+  background-color: #f2ffc4;
+}
+
+input,
+button,
+textarea {
+  font-family: "Nunito";
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+  background-color: transparent;
+}
+
+a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 195, 64);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+.wrapper {
+  overflow: clip;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+}
+
+.header__box {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  animation: showHeader 2s alternate forwards;
+  transition: all 2s linear;
+}
+
+@keyframes showHeader {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+.burger {
+  position: relative;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: none;
+  z-index: 101;
+}
+.burger i {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  background-color: var(--color-orange);
+  border: 3px solid #fff;
+}
+
+.burger__line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 3px;
+  transform: translateY(-50%);
+  background-color: #fff;
+  transition: opacity 0.3s linear;
+}
+
+.burger::before,
+.burger::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: transform 0.3s linear, top 0.3s linear, bottom 0.3s linear;
+}
+
+.burger::before {
+  top: 10px;
+}
+
+.burger::after {
+  bottom: 10px;
+}
+
+.burger--active .burger__line {
+  opacity: 0;
+}
+
+.burger--active::before {
+  bottom: auto;
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.burger--active::after {
+  bottom: auto;
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+.header__logo {
+  height: 75px;
+  position: relative;
+  background-color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.15s linear;
+  border: 2px solid black;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-top: none;
+  z-index: 101;
+}
+.header__logo img {
+  position: relative;
+  display: block;
+  z-index: 5;
+  height: 50px;
+  top: 11px;
+}
+.header__logo i {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  background-color: var(--color-orange);
+  border: 3px solid #fff;
+}
+
+.header__logo:hover {
+  box-shadow: inset 6px 6px var(--color-orange), inset -6px -6px var(--color-orange);
+}
+
+.header__menu {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  z-index: 100;
+}
+
+.menu__body {
+  width: 100%;
+  height: 100%;
+}
+
+.menu__list {
+  display: flex;
+}
+
+.menu__item {
+  flex: 1 1 auto;
+  background-color: #fff;
+  cursor: pointer;
+}
+.menu__item span {
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.menu__link {
+  height: 75px;
+  display: flex;
+  margin-left: -1px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-top: none;
+  column-gap: 5px;
+  transition: box-shadow 0.15s linear;
+}
+
+.menu__link:hover {
+  box-shadow: inset 6px 6px var(--color-orange), inset -6px -8px var(--color-orange);
+}
+
+.menu__link--mochi span {
+  color: var(--color-orange);
+  font-family: "SweetieBubbleGum";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  font-size: 40px;
+  text-shadow: 1px 5px 0 #000;
+}
+
+.menu__link--dark {
+  background-color: #000;
+  color: #fff;
+}
+.menu__link--dark span > span {
+  color: var(--color-orange);
+}
+
+@media (max-width: 992px) {
+  .header__box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .header__logo {
+    position: fixed;
+  }
+  .burger {
+    position: fixed;
+    display: block;
+    top: 20px;
+    right: 20px;
+  }
+  .menu__body {
+    overflow: auto;
+    padding-top: 17%;
+    width: 100%;
+    position: fixed;
+    flex: 1 1 auto;
+    background-color: #ff7d27;
+    transition: all 0.3s linear;
+    transform: translateY(-100%);
+  }
+  .menu__open {
+    transition: all 0.3s linear;
+    transform: translateY(0);
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .header__menu {
+    height: 100%;
+    left: 0;
+    width: 100%;
+    justify-content: end;
+    transition: all 0.3s ease-in-out;
+    overflow: auto;
+  }
+  .menu__list {
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 15px;
+    flex: 1 1 auto;
+    row-gap: 15px;
+  }
+  .menu__item {
+    background-color: rgb(255, 165, 86);
+  }
+  .menu__item span {
+    color: #fff;
+    font-size: 26px;
+  }
+  .menu__link {
+    border: 1px solid #fff;
+  }
+  .menu__link img {
+    fill: #fff;
+    color: #fff;
+    filter: invert(100%) hue-rotate(360deg) brightness(100%) contrast(100%);
+  }
+  .menu__link:hover {
+    box-shadow: inset 6px 6px #ff7d27, inset -6px -8px #ff7d27;
+  }
+  .header__logo {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.15s linear;
+  }
+  .header__logo:hover {
+    box-shadow: none;
+    transform: scale(1.1);
+  }
+}
+.page__hero {
+  padding-top: 200px;
+  height: 100vh;
+  min-height: 800px;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero__background {
+  position: fixed;
+  width: 300%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: line 150s linear 3.45s infinite;
+  pointer-events: none;
+}
+.hero__background img:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 33.33%;
+  height: 100%;
+}
+.hero__background img:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 33.3%;
+  width: 33.33%;
+  height: 100%;
+  transform: scaleX(-1);
+}
+.hero__background img:nth-child(3) {
+  position: absolute;
+  top: 0;
+  left: 66.6%;
+  width: 33.33%;
+  height: 100%;
+}
+
+@keyframes line {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-66.6%);
+  }
+}
+.container {
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 130px;
+  font-family: "SweetieBubbleGum";
+  text-align: center;
+  font-size: clamp(50px, 30vw, 250px);
+  line-height: 40%;
+  text-shadow: 7px 7px 0px #000, 7px -7px 0px #000, -3px 0px 0px #000;
+}
+.hero__title p {
+  color: #fff;
+  letter-spacing: -40px;
+  animation: text 0.4s forwards;
+  display: inline-block;
+}
+.hero__title p span {
+  animation: text 0.4s forwards;
+  visibility: hidden;
+  display: inline-block;
+}
+.hero__title p span:nth-child(1) {
+  animation-delay: 1.6s;
+}
+.hero__title p span:nth-child(2) {
+  animation-delay: 1.7s;
+}
+.hero__title p span:nth-child(3) {
+  animation-delay: 1.8s;
+}
+.hero__title p span:nth-child(4) {
+  animation-delay: 1.9s;
+}
+.hero__title .orange {
+  color: #ff7d27;
+}
+.hero__title .orange span {
+  animation: text 0.4s forwards;
+}
+.hero__title .orange span:nth-child(1) {
+  animation-delay: 2s;
+}
+.hero__title .orange span:nth-child(2) {
+  animation-delay: 2.1s;
+}
+.hero__title .orange span:nth-child(3) {
+  animation-delay: 2.2s;
+}
+.hero__title .orange span:nth-child(4) {
+  animation-delay: 2.3s;
+}
+.hero__title .orange span:nth-child(5) {
+  animation-delay: 2.4s;
+}
+.hero__title img {
+  position: absolute;
+  z-index: 2;
+  max-width: 45%;
+  top: 50px;
+  animation: cat 0.4s forwards;
+  animation-delay: 1.4s;
+  opacity: 0;
+}
+
+@keyframes text {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 0.8;
+    visibility: visible;
+    transform: scale(1.4);
+  }
+  90% {
+    opacity: 0.9;
+    visibility: visible;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+@keyframes cat {
+  0% {
+    transform: rotate(360deg) scale(-1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.hero__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero__bottom-text {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.hero__bottom-buttons {
+  display: flex;
+  column-gap: 10px;
+}
+
+.hero__bottom-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 230px;
+  border: 2px solid #000;
+  cursor: pointer;
+  font-weight: 900;
+  transition: all linear 0.2s;
+}
+
+.hero__bottom-button-button--white {
+  background-color: #fff;
+}
+
+.hero__bottom-button:hover {
+  transition: all linear 0.2s;
+  transform: translateY(3px);
+  box-shadow: 3px 6px var(--color-orange);
+}
+
+.buy-mochi__box {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  height: 405px;
+  position: relative;
+  z-index: 12;
+}
+
+.buy-mochi__content {
+  display: flex;
+  height: 405px;
+  align-items: baseline;
+  justify-content: flex-end;
+  background-color: rgb(255, 195, 64);
+  border: 1px solid #000;
+}
+
+.content-buy-mochi__images {
+  bottom: 0;
+  position: absolute;
+  transition: all 0.1s linear;
+  opacity: 0;
+  z-index: 11;
+}
+
+.content-buy-mochi__title {
+  margin-right: 40%;
+  display: none;
+  align-self: center;
+  text-wrap: nowrap;
+  font-size: 150px;
+  letter-spacing: -12px;
+  line-height: 95%;
+  color: #fff;
+  font-family: "TT Trailers Trial Black";
+  transition: all 0.1s linear;
+  text-shadow: 3px 3px 0px #000, 5px 0px 0px #000, -3px 3px 0px #000;
+  animation: text 0.4s forwards;
+}
+.content-buy-mochi__title span {
+  animation: text 0.4s forwards;
+  visibility: hidden;
+  display: inline-block;
+}
+.content-buy-mochi__title span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.content-buy-mochi__title span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.content-buy-mochi__title span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.content-buy-mochi__title span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.content-buy-mochi__title span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.content-buy-mochi__title span:nth-child(6) {
+  animation-delay: 1s;
+}
+.content-buy-mochi__title span:nth-child(7) {
+  animation-delay: 1.1s;
+}
+.content-buy-mochi__title span:nth-child(8) {
+  animation-delay: 1.2s;
+}
+.content-buy-mochi__title span:nth-child(9) {
+  animation-delay: 1.3s;
+}
+.content-buy-mochi__title span:nth-child(10) {
+  animation-delay: 1.4s;
+}
+
+@keyframes text {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 0.8;
+    visibility: visible;
+    transform: scale(1.4);
+  }
+  90% {
+    opacity: 0.9;
+    visibility: visible;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+@keyframes showCat {
+  0% {
+    opacity: 0;
+    bottom: -300px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+.content-buy-mochi__text {
+  position: relative;
+  top: 35px;
+}
+.content-buy-mochi__text span {
+  font-family: "TT Trailers Trial Black";
+  font-weight: 900;
+  font-size: 38px;
+  position: absolute;
+  text-align: center;
+  line-height: 23px;
+  left: 31px;
+  top: 29px;
+  transform: rotate(-11deg);
+}
+
+.content-buy-mochi__image-cat {
+  width: 100%;
+  min-width: 160px;
+  display: flex;
+  justify-content: flex-end;
+}
+.content-buy-mochi__image-cat img {
+  max-width: 100%;
+}
+
+.buy-mochi__items {
+  position: relative;
+  z-index: 11;
+}
+
+.buy-mochi__item {
+  align-items: center;
+  padding: 20px;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  background-color: rgb(175, 175, 255);
+  height: 135px;
+  width: 100%;
+  transition: all 0.15s linear;
+}
+
+.item-buy-mochi__title {
+  display: flex;
+  column-gap: 10px;
+  font-size: 42px;
+  font-family: "TT Trailers Trial Black";
+  font-weight: 900;
+}
+
+.buy-mochi__item img {
+  max-width: 55px;
+  max-height: 55px;
+  transition: transform 0.15s linear;
+}
+
+.buy-mochi__item:hover {
+  background-color: rgb(137, 137, 252);
+}
+.buy-mochi__item:hover .item-buy-mochi__title img:nth-child(3) {
+  transform: translate(5px, -3px);
+  transition: transform 0.15s linear;
+}
+
+.buy-mochi__item:nth-child(2) {
+  background-color: rgb(197, 255, 186);
+}
+
+.buy-mochi__item:nth-child(2):hover {
+  background-color: rgb(156, 241, 139);
+}
+.buy-mochi__item:nth-child(2):hover .item-buy-mochi__title img:nth-child(3) {
+  transform: translate(5px, -3px);
+  transition: transform 0.15s linear;
+}
+
+.buy-mochi__item:nth-child(3) {
+  background-color: rgb(255, 170, 220);
+}
+
+.buy-mochi__item:nth-child(3):hover {
+  background-color: rgb(247, 130, 198);
+}
+.buy-mochi__item:nth-child(3):hover .item-buy-mochi__title img:nth-child(3) {
+  transform: translate(5px, -3px);
+  transition: transform 0.15s linear;
+}
+
+.buy-mochi__item:hover {
+  box-shadow: inset 4px 6px #000, inset -4px -6px #000;
+}
+
+.item-buy-mochi__text {
+  font-weight: 800;
+}
+
+.page__base {
+  position: relative;
+  z-index: 14;
+}
+
+.life-line__box {
+  display: block;
+  margin: 0 auto;
+  max-width: 1300px;
+  min-width: 1100px;
+  pointer-events: none;
+}
+
+.life-line {
+  top: -13%;
+  position: absolute;
+  z-index: 2;
+}
+
+textPath {
+  font-family: "TT Trailers Trial Black";
+  fill: #fff;
+  font-size: 75px;
+  font-weight: normal;
+  text-shadow: 5px 5px 0 #000, 5px 5px 0 #000, 5px 5px 0 #000;
+}
+
+@media (max-width: 1400px) {
+  .content-buy-mochi__title {
+    margin-right: 50%;
+    font-size: 120px;
+  }
+  .content-buy-mochi__images {
+    width: 280px;
+  }
+}
+@media (max-width: 1200px) {
+  .life-line__box {
+    opacity: 0;
+  }
+}
+@media (max-width: 992px) {
+  .buy-mochi__box {
+    display: block;
+  }
+  .content-buy-mochi__title {
+    margin-right: 40%;
+    font-size: 150px;
+  }
+  .content-buy-mochi__images {
+    max-width: 100%;
+  }
+  .page__base {
+    z-index: 10;
+    margin-top: 405px;
+  }
+  .hero__title p {
+    letter-spacing: -30px;
+  }
+  .hero__title .orange {
+    letter-spacing: -30px;
+  }
+  .hero__title img {
+    max-width: 33%;
+  }
+  .hero__bottom {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+  }
+  .hero__bottom .hero__bottom-buttons {
+    height: 55px;
+  }
+  .base__decor-item {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .hero__title {
+    font-size: clamp(100px, 35vw, 150px);
+    margin-left: -8%;
+  }
+  .hero__title p {
+    letter-spacing: -19px;
+  }
+  .hero__title .orange {
+    letter-spacing: -23px;
+  }
+  .hero__title img {
+    max-width: 50%;
+    left: 25%;
+    top: 0;
+  }
+  .hero__bottom-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero__bottom-button {
+    padding: 12px;
+    width: 280px;
+  }
+  .content-buy-mochi__title {
+    font-size: clamp(65px, 27vw, 140px);
+    margin-top: -100px;
+    letter-spacing: -12px;
+  }
+  .content-buy-mochi__images {
+    width: 230px;
+  }
+  .base__items {
+    padding: 0 15px;
+  }
+}
+.base {
+  position: relative;
+  overflow: hidden;
+}
+
+.page__base::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  background: rgb(139, 206, 255);
+  background: linear-gradient(0deg, rgba(139, 206, 255, 0.6713060224) 0%, rgb(172, 199, 255) 58%, rgb(0, 40, 255) 100%);
+  inset: 0;
+}
+
+.base__decor-item {
+  position: absolute;
+  animation: cats 3s ease infinite;
+  z-index: -1;
+}
+
+@keyframes cats {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(9%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.base__decor-item--1 {
+  top: 25%;
+  right: -3%;
+  animation-delay: 1.5s;
+}
+
+.base__decor-item--2 {
+  top: 65%;
+}
+.base__decor-item--2 img:nth-child(2) {
+  position: absolute;
+  right: 10%;
+  z-index: -1;
+  top: 70%;
+}
+
+.base__header {
+  margin-top: 160px;
+  height: 352px;
+  text-align: center;
+  opacity: 0;
+}
+
+.base__header-title {
+  display: none;
+  position: relative;
+  font-family: "SweetieBubbleGum";
+  color: #fff;
+  font-size: clamp(50px, 28vw, 170px);
+  letter-spacing: -18px;
+  text-shadow: 5px 5px 0 #000, 5px 5px 0 #000, 5px 5px 0 #000;
+  line-height: 125px;
+  z-index: -1;
+}
+.base__header-title span {
+  animation: text 0.4s forwards;
+  opacity: 0;
+  display: inline-block;
+  animation-delay: 1s;
+}
+.base__header-title span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.base__header-title span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.base__header-title span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.base__header-title span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.base__header-title span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.base__header-title span:nth-child(6) {
+  animation-delay: 1s;
+}
+
+.base__header-title::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 56%;
+  aspect-ratio: 1/1;
+  background-image: url(img/base/star.svg);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.base__header-label {
+  display: none;
+  font-size: 72px;
+  text-shadow: 5px 5px 0 #000, 5px 5px 0 #000, 5px 5px 0 #000;
+  color: #fff;
+  font-family: "TT Trailers Trial Black";
+  text-align: center;
+  animation: textTop 0.4s forwards;
+  animation-delay: 1.5s;
+  opacity: 0;
+  transform: translateY(30%);
+}
+
+@keyframes textTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(65%);
+  }
+  100% {
+    transform: translateY(30%);
+    opacity: 1;
+  }
+}
+.base__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 70px;
+  padding-bottom: 150px;
+}
+
+.base__item {
+  display: flex;
+  max-width: 660px;
+  align-items: center;
+  justify-content: center;
+}
+
+.base__item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.base__item .base__item-image {
+  animation-delay: 1s;
+}
+.base__item .base__item-image span {
+  position: absolute;
+  top: 30px;
+  font-size: 18px;
+  font-family: "SweetieBubbleGum";
+  transform: rotate(15deg) translate(37px);
+}
+
+.base__item:nth-child(2) .base__item-image:nth-child(2) span {
+  transform: rotate(-6deg) translate(33px, 11px);
+}
+
+.base__item:nth-child(3) .base__item-text span {
+  text-wrap: nowrap;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0 5px;
+}
+.base__item:nth-child(3) .base__item-image:nth-child(2) {
+  padding-left: 10px;
+}
+.base__item:nth-child(3) .base__item-image:nth-child(2) span {
+  transform: rotate(11deg) translate(25px, 3px);
+}
+.base__item:nth-child(3) .base__item-image:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  background-image: url(img/base/04.svg);
+  aspect-ratio: 16/9;
+  width: 108px;
+  top: 62px;
+  left: -56px;
+  background-repeat: no-repeat;
+}
+
+.base__item-text {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.base__item-image {
+  position: relative;
+  opacity: 0;
+}
+.base__item-image img {
+  z-index: -1;
+  position: relative;
+  filter: drop-shadow(0px 5.336px 0px #000);
+}
+
+.animation-clouds {
+  animation: base-cloud 0.5s ease-in-out forwards;
+}
+
+.base__item:nth-child(2) .base__item-image {
+  animation-delay: 1.6s;
+}
+
+.base__item:nth-child(3) .base__item-image {
+  animation-delay: 2.2s;
+}
+
+@media (max-width: 700px) {
+  .base__item-image::before {
+    display: none;
+  }
+  .base__item-text {
+    font-size: 16px;
+  }
+}
+@keyframes base-cloud {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.page__line {
+  position: relative;
+  z-index: 14;
+  border-left: none;
+  border-right: none;
+}
+
+.line__line {
+  position: relative;
+  left: 0;
+  width: 200%;
+  background: #fff;
+  left: 0;
+  display: flex;
+  animation: string 25s linear infinite;
+  display: flex;
+}
+
+.line__line-row {
+  display: flex;
+  width: 100%;
+  gap: 50px;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.line__line-item {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+.line__line-item span {
+  font-family: "TT Trailers Trial Black";
+  font-size: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.line__line-item img {
+  display: inline-block;
+  z-index: 2;
+}
+
+@keyframes string {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.line__cloud {
+  position: absolute;
+  top: -80%;
+  left: 50%;
+}
+
+.line__cloud-background {
+  position: absolute;
+  left: -110%;
+}
+
+@media (max-width: 666px) {
+  .line__cloud-background {
+    left: -92%;
+  }
+  .line__cloud-background img {
+    max-width: 500px;
+  }
+}
+.line__cloud-body {
+  position: relative;
+  z-index: 4;
+  left: -42%;
+  transform: translateY(-17%);
+}
+
+.line__cloud-body-background {
+  position: relative;
+  left: -12%;
+}
+
+.page__items {
+  position: relative;
+  z-index: 11;
+  width: 100%;
+  overflow: hidden;
+  clip-path: border-box;
+  min-height: 100vh;
+}
+
+.page__items::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: -150%;
+  background-image: repeating-conic-gradient(from 45deg at 50% 50%, #e35b0b 0deg 10deg, #ffffff 11deg 20deg, #ffbf3e 21deg 30deg);
+  animation: coinc-background-rotate linear 100s infinite;
+}
+
+@keyframes coinc-background-rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+.items__background {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.items__background img {
+  max-width: 36%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-44%, -44%);
+  z-index: 3;
+}
+
+.items__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.items__body {
+  display: grid;
+  gap: 30px;
+  top: 100px;
+  margin-bottom: 200px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  position: relative;
+}
+
+.items__item {
+  position: relative;
+  display: flex;
+  max-width: 450px;
+  max-height: 500px;
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 15px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #000;
+  z-index: 2;
+  box-shadow: 7px 7px #000, 7px 7px #000;
+}
+
+.item-items__decor-bottom-left {
+  position: absolute;
+  width: 35px;
+  height: 20px;
+  background: #ffffff;
+  bottom: 0;
+  left: 20px;
+}
+
+.item-items__decor-bottom-right {
+  position: absolute;
+  width: 35px;
+  height: 20px;
+  background: #ffffff;
+  bottom: 0;
+  right: 20px;
+  z-index: 5;
+}
+
+.items__item::before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #000;
+  bottom: -20px;
+  left: 20px;
+}
+
+.items__item::after {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #000;
+  bottom: -20px;
+  right: 20px;
+}
+
+.items__item:nth-child(1) {
+  grid-row-start: 2;
+  top: -150px;
+}
+
+.items__item:nth-child(2)::before,
+.items__item:nth-child(2)::after {
+  content: none;
+}
+
+.items__item:nth-child(2) {
+  grid-column-start: 2;
+  height: 200px;
+}
+
+.items__item:nth-child(3) {
+  grid-row-start: 2;
+  grid-column-start: 3;
+  top: -150px;
+  z-index: 3;
+}
+
+.item-items__decor-top {
+  position: absolute;
+  top: -40px;
+  left: 47%;
+  transform: translate(0, 50%);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  z-index: 1;
+}
+.item-items__decor-top i {
+  position: absolute;
+  top: -30px;
+  height: 70px;
+  background-color: #000;
+  width: 2px;
+}
+.item-items__decor-top i:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #000;
+}
+.item-items__decor-top i:nth-child(2):before {
+  top: -6px;
+  left: -6px;
+}
+.item-items__decor-top i:nth-child(1) {
+  left: 37px;
+  transform: rotate(58deg) translateY(-20px);
+}
+.item-items__decor-top i:nth-child(2) {
+  left: 0;
+  transform: rotate(-58deg) translateY(-20px);
+}
+
+.item-items__decor-top::after {
+  position: absolute;
+  content: "";
+  top: 20px;
+  height: 20px;
+  width: 40px;
+  z-index: 2;
+  background: #fff;
+}
+
+.animation-items-title {
+  animation: text 0.4s forwards;
+  visibility: hidden;
+  display: inline-block;
+  opacity: 1;
+}
+
+.item-text-animation {
+  animation: text 0.4s forwards;
+  visibility: hidden;
+  display: inline-block;
+}
+
+.item-items__title {
+  font-size: 60px;
+  text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, 2px 3px 0 #000, -2px 3px 0 #000, 2px -1px 0 #000;
+  color: #fff;
+  font-family: "TT Trailers Trial Black";
+  text-align: center;
+  animation-delay: 1.5s;
+  letter-spacing: -4px;
+  opacity: 0;
+  visibility: hidden;
+  animation: text 0.4s forwards;
+}
+.item-items__title span {
+  visibility: hidden;
+}
+.item-items__title span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.item-items__title span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.item-items__title span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.item-items__title span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.item-items__title span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.item-items__title span:nth-child(6) {
+  animation-delay: 1s;
+}
+.item-items__title span:nth-child(7) {
+  animation-delay: 1.1s;
+}
+.item-items__title span:nth-child(8) {
+  animation-delay: 1.2s;
+}
+.item-items__title span:nth-child(9) {
+  animation-delay: 1.3s;
+}
+.item-items__title span:nth-child(10) {
+  animation-delay: 1.4s;
+}
+.item-items__title span:nth-child(11) {
+  animation-delay: 1.5s;
+}
+.item-items__title span:nth-child(12) {
+  animation-delay: 1.6s;
+}
+.item-items__title span:nth-child(13) {
+  animation-delay: 1.7s;
+}
+
+.items__item:nth-child(2) .item-items__title:nth-child(2) span {
+  visibility: hidden;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(1) {
+  animation-delay: 1.2s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(2) {
+  animation-delay: 1.3s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(3) {
+  animation-delay: 1.4s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(5) {
+  animation-delay: 1.6s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(6) {
+  animation-delay: 1.7s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(7) {
+  animation-delay: 1.8s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(8) {
+  animation-delay: 1.9s;
+}
+.items__item:nth-child(2) .item-items__title:nth-child(2) span:nth-child(9) {
+  animation-delay: 2s;
+}
+
+.items__item:nth-child(3) .item-items__title:nth-child(2) span {
+  visibility: hidden;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(1) {
+  animation-delay: 1.9s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(2) {
+  animation-delay: 2s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(3) {
+  animation-delay: 2.1s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(4) {
+  animation-delay: 2.2s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(5) {
+  animation-delay: 2.3s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(6) {
+  animation-delay: 2.4s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(7) {
+  animation-delay: 2.5s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(8) {
+  animation-delay: 2.6s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(9) {
+  animation-delay: 2.8s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(10) {
+  animation-delay: 2.9s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(11) {
+  animation-delay: 3s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(12) {
+  animation-delay: 3.1s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(13) {
+  animation-delay: 3.2s;
+}
+.items__item:nth-child(3) .item-items__title:nth-child(2) span:nth-child(14) {
+  animation-delay: 3.3s;
+}
+
+.item-items__text {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 0 25px 0;
+}
+
+.item-items__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 60px;
+  width: 230px;
+  border: 2px solid #000;
+  cursor: pointer;
+  font-weight: 900;
+  transition: all linear 0.15s;
+  background-color: #fff;
+}
+
+.item-items__button:hover {
+  transition: all linear 0.15s;
+  box-shadow: inset 4px 4px #000, inset -4px -4px #000;
+}
+
+@media (max-width: 992px) {
+  .items__background img {
+    display: none;
+  }
+  .items__body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr;
+    gap: 80px;
+  }
+  .items__item {
+    min-width: 550px;
+  }
+  .items__item:nth-child(1) {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    top: 0;
+  }
+  .items__item:nth-child(2) {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    top: 0;
+    min-height: 258px;
+    justify-content: normal;
+  }
+  .items__item:nth-child(3) {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    top: 0;
+  }
+  .items__item:nth-child(2)::before,
+  .items__item:nth-child(2)::after {
+    content: "";
+  }
+}
+@media (max-width: 576px) {
+  .items__item {
+    min-width: auto;
+  }
+}
+.how-to-buy {
+  position: relative;
+}
+
+.how-to-buy__top {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 150px;
+  background: linear-gradient(180deg, #fffbf2 0, #fffbf2 80%, rgba(255, 251, 242, 0) 100%);
+}
+
+.how-to-buy__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.how-to-buy__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex: 1 1 auto;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding: 15px 23px;
+  background-color: #fff;
+  border: 2px solid #000;
+  transition: box-shadow 0.15s linear;
+}
+.how-to-buy__button span {
+  font-family: "TT Trailers Trial Black";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 110%;
+  text-wrap: nowrap;
+  font-size: clamp(35px, 9vw, 55px);
+}
+.how-to-buy__button svg {
+  width: 48px;
+  height: 48px;
+}
+
+@media (max-width: 750px) {
+  .how-to-buy__button {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.how-to-buy__button:not(:last-child) svg path {
+  fill: #000;
+}
+
+.how-to-buy__button:hover {
+  box-shadow: inset 6px 6px var(--color-orange), inset -6px -6px var(--color-orange);
+  transition: box-shadow 0.15s linear;
+}
+
+.how-to-buy__button:focus:last-child svg path {
+  fill: rgb(89, 0, 255);
+}
+
+.how-to-buy__button.active {
+  background-color: #000;
+  color: #fff;
+}
+.how-to-buy__button.active svg path {
+  fill: #fff;
+}
+
+#book-1-page-1,
+#book-1-page-2,
+#book-2-page-2,
+#book-2-page-2,
+#book-3-page-2,
+#book-3-page-2 {
+  display: none;
+}
+
+.how-to-buy-book__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.how-to-buy-book__box {
+  display: none;
+  position: relative;
+  height: 600px;
+  justify-content: center;
+}
+
+.how-to-buy-book__box.active {
+  display: flex;
+}
+
+.how-to-buy-book__first-page,
+.how-to-buy-book__last-page {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #f5f5f5;
+  border-radius: 40px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 0 #000, 7px 7px 0 #000, 7px 7px 0 #000;
+}
+
+.how-to-buy-book__first-page {
+  left: 0;
+  padding: 50px;
+}
+.how-to-buy-book__first-page h2 {
+  font-size: clamp(55px, 22vw, 130px);
+  letter-spacing: -15px;
+  font-family: "TT Trailers Trial Black";
+  color: #fff;
+  font-style: normal;
+  font-weight: 900;
+  align-self: center;
+  text-wrap: nowrap;
+  letter-spacing: -10px;
+  line-height: 100%;
+  text-shadow: 5px 3px 0px #000, 3px -2px 0px #000, -3px 3px 0px #000;
+  transition: all 0.1s linear;
+  animation: text 0.4s forwards;
+}
+.how-to-buy-book__first-page h2 span {
+  animation: text 0.4s forwards;
+  visibility: hidden;
+  display: inline-block;
+}
+.how-to-buy-book__first-page h2 span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(6) {
+  animation-delay: 1s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(7) {
+  animation-delay: 1.1s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(8) {
+  animation-delay: 1.2s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(9) {
+  animation-delay: 1.3s;
+}
+.how-to-buy-book__first-page h2 span:nth-child(10) {
+  animation-delay: 1.4s;
+}
+.how-to-buy-book__first-page .orange {
+  color: #ff7d27;
+  font-size: 122px;
+}
+.how-to-buy-book__first-page .orange span {
+  animation: text 0.4s forwards;
+}
+.how-to-buy-book__first-page .orange span:nth-child(1) {
+  animation-delay: 1.5s;
+}
+.how-to-buy-book__first-page .orange span:nth-child(2) {
+  animation-delay: 1.6s;
+}
+.how-to-buy-book__first-page .orange span:nth-child(3) {
+  animation-delay: 1.7s;
+}
+.how-to-buy-book__first-page .orange span:nth-child(4) {
+  animation-delay: 1.8s;
+}
+.how-to-buy-book__first-page .orange span:nth-child(5) {
+  animation-delay: 1.9s;
+}
+.how-to-buy-book__first-page .orange span:nth-child(6) {
+  animation-delay: 2s;
+}
+.how-to-buy-book__first-page p:nth-child(2) {
+  font-size: 70px;
+  color: #000;
+  font-family: "TT Trailers Trial Black";
+  animation: textBook 0.4s forwards;
+  animation-delay: 2.5s;
+  opacity: 0;
+  font-weight: 400;
+  z-index: 1;
+}
+@keyframes textBook {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(20%);
+  }
+  100% {
+    transform: translateY(10%);
+    opacity: 1;
+  }
+}
+
+.how-to-buy-book__last-page {
+  left: 50%;
+}
+
+.how-to-buy-book__items-wrapper {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  transform: translateY(0);
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition-duration: 0.8s;
+  border-radius: 40px;
+  border: 1px solid #000;
+}
+
+.page-1 {
+  z-index: 3;
+}
+
+.page-2 {
+  z-index: 2;
+}
+
+.how-to-buy-book__item--front {
+  position: relative;
+  backface-visibility: hidden;
+  overflow: hidden;
+  height: 100%;
+  padding: 50px;
+}
+.how-to-buy-book__item--front h3 {
+  font-size: clamp(55px, 22vw, 130px);
+  text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, 2px 3px 0 #000, -2px 3px 0 #000, 2px -1px 0 #000;
+  color: #fff;
+  font-family: "TT Trailers Trial Black";
+}
+.how-to-buy-book__item--front p {
+  padding-top: 22px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.how-to-buy-book__item--back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  padding: 50px;
+  z-index: 99;
+}
+.how-to-buy-book__item--back span {
+  color: #ff7d27;
+}
+.how-to-buy-book__item--back h3 {
+  font-size: 72px;
+  text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, 2px 3px 0 #000, -2px 3px 0 #000, 2px -1px 0 #000;
+  color: #fff;
+  font-family: "TT Trailers Trial Black";
+}
+.how-to-buy-book__item--back p {
+  padding-top: 16px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.how-to-buy-book__item--front span {
+  color: #ff7d27;
+}
+
+.label-book-front-page {
+  position: absolute;
+  right: 0;
+  top: 46%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.how-to-buy-book__bottom-label {
+  position: absolute;
+  top: 89%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #808080;
+  opacity: 0.4;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+#book-1-page-1:checked ~ .page-1 {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+#book-1-page-2:checked ~ .page-2 {
+  transform: rotateY(180deg);
+  z-index: 2;
+}
+
+#book-2-page-1:checked ~ .page-1 {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+#book-2-page-2:checked ~ .page-2 {
+  transform: rotateY(180deg);
+  z-index: 2;
+}
+
+#book-3-page-1:checked ~ .page-1 {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+#book-3-page-2:checked ~ .page-2 {
+  transform: rotateY(180deg);
+  z-index: 2;
+}
+
+@media (max-width: 1100px) {
+  .how-to-buy-book__first-page h2,
+  .how-to-buy-book__first-page .orange {
+    font-size: 100px;
+  }
+  .how-to-buy-book__item--front p,
+  .how-to-buy-book__item--back p {
+    font-size: 18px;
+  }
+  .how-to-buy-book__bottom-label {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .how-to-buy-book__box {
+    max-height: 500px;
+  }
+}
+@media (max-width: 800px) {
+  .how-to-buy-book__items-wrapper {
+    left: 0;
+    top: 100%;
+    background-color: #fff;
+    transform-origin: top;
+    transform-style: preserve-3d;
+    width: 100%;
+  }
+  .how-to-buy-book__first-page {
+    width: 100%;
+    padding: 30px;
+  }
+  .how-to-buy-book__first-page h2 {
+    font-size: clamp(55px, 22vw, 130px);
+    line-height: 100px;
+  }
+  .how-to-buy-book__first-page p {
+    font-size: 55px;
+  }
+  .how-to-buy-book__item--front {
+    padding: 30px;
+  }
+  .how-to-buy-book__item--front h3 {
+    font-size: 80px;
+  }
+  .how-to-buy-book__item--front p {
+    font-size: 16px;
+    padding-top: 10px;
+  }
+  .how-to-buy-book__item--back {
+    padding: 30px;
+  }
+  .how-to-buy-book__item--back h3 {
+    font-size: 80px;
+  }
+  .how-to-buy-book__item--back p {
+    font-size: 16px;
+    padding-top: 10px;
+  }
+  .how-to-buy-book__box {
+    max-height: 375px;
+  }
+  .how-to-buy-book__last-page {
+    width: 100%;
+    left: 0;
+    top: 100%;
+  }
+  .how-to-buy__top {
+    margin-bottom: 500px;
+  }
+  .label-book-front-page {
+    left: 48%;
+    top: 93%;
+    transform: rotate(90deg);
+  }
+  .how-to-buy-book__bottom-label {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .how-to-buy-book__item--back {
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+  }
+  #book-1-page-1:checked ~ .page-1 {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+  #book-1-page-2:checked ~ .page-2 {
+    transform: rotateX(180deg);
+    z-index: 2;
+  }
+  #book-2-page-1:checked ~ .page-1 {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+  #book-2-page-2:checked ~ .page-2 {
+    transform: rotateX(180deg);
+    z-index: 2;
+  }
+  #book-3-page-1:checked ~ .page-1 {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+  #book-3-page-2:checked ~ .page-2 {
+    transform: rotateX(180deg);
+    z-index: 2;
+  }
+}
+.how-to-buy__bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.how-to-buy__bottom-background {
+  position: absolute;
+  width: 100%;
+  top: -116.6%;
+  height: 200%;
+}
+
+.how-to-buy__bottom-background-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.how-to-buy__bottom-background-floor {
+  position: absolute;
+  height: 22%;
+  top: 81%;
+  left: 0;
+  width: 100%;
+}
+
+@media (max-width: 666px) {
+  .how-to-buy__bottom-background {
+    top: -130%;
+  }
+}
+.how-to-buy__container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.how-to-buy__title {
+  font-size: clamp(50px, 15vw, 160px);
+  letter-spacing: -15px;
+  font-family: "TT Trailers Trial Black";
+  color: #fff;
+  font-style: normal;
+  font-weight: 900;
+  align-self: center;
+  text-wrap: nowrap;
+  letter-spacing: -14px;
+  line-height: 100%;
+  text-shadow: 3px 3px 0px #000, 3px -2px 0px #000, -3px 3px 0px #000;
+  transition: all 0.1s linear;
+}
+.how-to-buy__title span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.how-to-buy__title span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.how-to-buy__title span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.how-to-buy__title span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.how-to-buy__title span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.how-to-buy__title span:nth-child(6) {
+  animation-delay: 1s;
+}
+.how-to-buy__title span:nth-child(7) {
+  animation-delay: 1.1s;
+}
+.how-to-buy__title span:nth-child(8) {
+  animation-delay: 1.2s;
+}
+.how-to-buy__title span:nth-child(9) {
+  animation-delay: 1.3s;
+}
+.how-to-buy__title span:nth-child(10) {
+  animation-delay: 1.4s;
+}
+.how-to-buy__title .orange {
+  color: #ff7d27;
+}
+.how-to-buy__title span:nth-child(11) {
+  animation-delay: 1.5s;
+}
+.how-to-buy__title span:nth-child(12) {
+  animation-delay: 1.6s;
+}
+.how-to-buy__title span:nth-child(13) {
+  animation-delay: 1.7s;
+}
+.how-to-buy__title span:nth-child(14) {
+  animation-delay: 1.8s;
+}
+.how-to-buy__title span:nth-child(15) {
+  animation-delay: 1.9s;
+}
+.how-to-buy__title span:nth-child(16) {
+  animation-delay: 2s;
+}
+.how-to-buy__title span:nth-child(17) {
+  animation-delay: 2.1s;
+}
+.how-to-buy__title span:nth-child(18) {
+  animation-delay: 2.2s;
+}
+.how-to-buy__title span:nth-child(19) {
+  animation-delay: 2.3s;
+}
+.how-to-buy__title span:nth-child(20) {
+  animation-delay: 2.4s;
+}
+
+.how-to-buy__items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.how-to-buy__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: pointer;
+  overflow: hidden;
+}
+.how-to-buy__item img {
+  width: 100%;
+}
+
+.how-to-buy__item.active {
+  transition: transform 1s ease;
+}
+.how-to-buy__item.active img {
+  animation: jump 0.5s ease;
+}
+
+.how-to-buy__item.active:before {
+  position: absolute;
+  content: "";
+  bottom: -36%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 100%;
+  width: 70%;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url(img/how-to-buy/cat-hover.svg);
+  animation: paint 0.6s ease;
+}
+
+@keyframes paint {
+  from {
+    width: 40%;
+    opacity: 0;
+  }
+  to {
+    width: 70%;
+    opacity: 1;
+  }
+}
+@keyframes jump {
+  50% {
+    transform: translateY(-15%);
+  }
+}
+.how-to-buy__bottom-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+}
+
+.how-to-buy__bottom-button {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
+  flex: 1 1 auto;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding: 15px 23px;
+  background-color: #fff;
+  border: 2px solid #000;
+  transition: box-shadow 0.15s linear;
+  cursor: pointer;
+}
+.how-to-buy__bottom-button span {
+  font-family: "TT Trailers Trial Black";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 110%;
+  text-wrap: nowrap;
+  font-size: 40px;
+}
+.how-to-buy__bottom-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.how-to-buy__bottom-button:not(:last-child) svg path {
+  fill: #000;
+}
+
+.how-to-buy__bottom-button:hover {
+  box-shadow: inset 6px 6px #000, inset -6px -6px #000;
+  transition: box-shadow 0.15s linear;
+}
+.how-to-buy__bottom-button:hover svg {
+  transform: translate(5px, -3px);
+  transition: transform 0.15s linear;
+}
+
+.how-to-buy__bottom-button:focus:last-child svg path {
+  fill: rgb(89, 0, 255);
+}
+
+.how-to-buy__bottom-button.active {
+  background-color: #ff7d27;
+  color: #fff;
+}
+.how-to-buy__bottom-button.active svg path {
+  fill: #fff;
+}
+
+@media (max-width: 800px) {
+  .how-to-buy__title {
+    font-size: clamp(50px, 15vw, 160px);
+    letter-spacing: -10px;
+    text-shadow: 1px 1px 0px #000, 1px -3px 0px #000, -1px 1px 0px #000;
+  }
+  .how-to-buy__bottom-buttons {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .how-to-buy__title {
+    font-size: clamp(50px, 16vw, 160px);
+    letter-spacing: -8px;
+  }
+}
+.road-map {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #fffbf2 0, #fffbf2 90%, rgba(255, 251, 242, 0) 100%);
+  padding-bottom: 150px;
+}
+
+.road-map__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.road-map__title {
+  text-align: center;
+  font-size: clamp(50px, 21vw, 260px);
+  padding-top: 70px;
+  text-wrap: nowrap;
+  font-family: "SweetieBubbleGum";
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -37px;
+  text-shadow: 5px -2px 0 #000, 5px 6px 0 #000, 5px 5px 0 #000, -3px -4px 0 #000, -3px 7px 0 #000;
+  transition: all 0.1s linear;
+}
+.road-map__title span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.road-map__title span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.road-map__title span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.road-map__title span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.road-map__title span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.road-map__title span:nth-child(6) {
+  animation-delay: 1s;
+}
+.road-map__title span:nth-child(7) {
+  animation-delay: 1.1s;
+}
+
+.road-map__image {
+  position: relative;
+  top: -180px;
+  left: 11%;
+  transform: translateX(-11%);
+  padding-top: 100px;
+  animation: mountain 3s ease infinite;
+  height: 100%;
+}
+.road-map__image img {
+  position: absolute;
+  z-index: 1;
+}
+
+@keyframes mountain {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(9%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.road-map__steps {
+  margin-top: 500px;
+}
+
+.steps-road-map__row-item {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+.steps-road-map__row:nth-child(2) .steps-road-map__row-item {
+  margin-right: 0%;
+}
+
+.steps-road-map__title {
+  line-height: 33px;
+  width: 280px;
+}
+.steps-road-map__title span {
+  font-size: 45px;
+  color: #fff;
+  font-family: "TT Trailers Trial Black";
+  text-shadow: 0px 3px 0 #000, -3px -1px 0 #000, 3px 2px 0 #000, 0px -1px 0 #000, -3px 3px 0 #000;
+}
+
+.steps-road-map__title span {
+  text-wrap: nowrap;
+}
+
+.steps-road-map__row:nth-child(2) .steps-road-map__row-item {
+  margin-top: -38px;
+}
+.steps-road-map__row:nth-child(2) .steps-road-map__title {
+  position: relative;
+}
+.steps-road-map__row:nth-child(2) .steps-road-map__title span:after {
+  content: "";
+  position: absolute;
+  background-image: url(img/roadmap/02.svg);
+  top: -22px;
+  right: 20px;
+  width: 74px;
+  height: 74px;
+  background-repeat: no-repeat;
+}
+
+.steps-road-map__row:nth-child(3) {
+  top: -25px;
+  align-items: center;
+}
+.steps-road-map__row:nth-child(3) .steps-road-map__row-item {
+  margin-left: -150px;
+}
+
+@keyframes booble {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.steps-road-map__row-road:nth-child(2) {
+  margin-right: 30px;
+}
+
+.steps-road-map__row {
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.steps-road-map__row.active {
+  animation: stepsItem 1s forwards;
+}
+
+.steps-road-map__row:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+.steps-road-map__row:nth-child(3) {
+  position: relative;
+  animation-delay: 3.5s;
+}
+
+.steps-road-map__row:nth-child(4) {
+  right: 12%;
+  margin-top: 20px;
+  justify-content: end;
+  position: relative;
+  animation-delay: 5s;
+}
+
+.steps-road-map__row:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  background-image: url(img/roadmap/03.svg);
+  top: -9%;
+  left: 21%;
+  width: 74px;
+  height: 74px;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1280px) {
+  .steps-road-map__row:nth-child(3)::before {
+    left: 16%;
+  }
+  .steps-road-map__row:nth-child(4) {
+    right: 9%;
+  }
+  .steps-road-map__row:nth-child(1) .steps-road-map__row-item {
+    width: 230px;
+  }
+}
+@keyframes stepsItem {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.steps-road-map__row-road-image-decor {
+  position: absolute;
+  background-color: #72ddff;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  bottom: 0;
+  right: -8px;
+  opacity: 0;
+}
+
+.steps-road-map__row-road-image-decor.active {
+  animation: stepsItem 1s forwards;
+  animation-delay: 5s;
+}
+
+.steps-road-map__row:nth-child(2) {
+  flex-direction: row-reverse;
+}
+
+.steps-road-map__row-road-image {
+  position: relative;
+}
+
+.steps-road-map__row-road-image::before {
+  content: "";
+  position: absolute;
+  background-image: url(img/roadmap/01.svg);
+  top: 10px;
+  left: 20px;
+  width: 78px;
+  height: 74px;
+  background-repeat: no-repeat;
+}
+
+.steps-road-map__row:nth-child(2) .steps-road-map__row-road .steps-road-map__row-road-image::before {
+  background-image: url(none);
+}
+
+.steps-road-map__row:nth-child(3) .steps-road-map__row-road .steps-road-map__row-road-image::before {
+  background-image: url(img/roadmap/04.svg);
+}
+
+.steps-road-map__row:nth-child(2) .steps-road-map__row-road .steps-road-map__row-road-image::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -15px;
+  width: 20px;
+  height: 20px;
+  background-color: #e35b0b;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.steps-road-map__row:nth-child(2) .steps-road-map__row-road-image {
+  top: -10px;
+}
+
+.steps-road-map__row:nth-child(2) .steps-road-map__row-road-image::before {
+  top: 185px;
+  left: 85px;
+}
+
+.steps-road-map__row:nth-child(3) .steps-road-map__row-road-image {
+  left: 40px;
+  top: 22px;
+}
+
+.steps-road-map__text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  gap: 10px;
+}
+.steps-road-map__text p {
+  font-style: italic;
+  font-weight: 700;
+}
+
+#road-line-1 .line-1 {
+  stroke-dasharray: 1474;
+  stroke-dashoffset: 1474;
+  fill: none;
+  stroke-width: 5px;
+  stroke: #EEF2D3;
+}
+
+.line-1.active {
+  animation: colorLine 1.5s linear;
+}
+
+.line-2.active {
+  animation: colorLine-2 1.5s linear;
+}
+
+.line-3.active {
+  animation: colorLine-3 1.5s linear;
+}
+
+#road-line-2 .line-2 {
+  stroke-dasharray: 1093;
+  stroke-dashoffset: 1093;
+  fill: none;
+  stroke-width: 5px;
+  stroke: rgb(236, 204, 187);
+}
+
+#road-line-3 {
+  position: relative;
+  margin-top: 40px;
+  margin-left: 85px;
+}
+#road-line-3 .line-3 {
+  stroke-dasharray: 2209;
+  stroke-dashoffset: 2209;
+  fill: none;
+  stroke-width: 5px;
+  stroke: #C2ECFE;
+}
+
+@keyframes colorLine {
+  0% {
+    stroke: #FEC7C2;
+  }
+  20% {
+    stroke: #e98b7a;
+  }
+  40% {
+    stroke: #d3c185;
+  }
+  60% {
+    stroke: #d0f8a1;
+  }
+  80% {
+    stroke: #bed18b;
+  }
+  100% {
+    stroke: #EEF2D3;
+  }
+}
+@keyframes colorLine-2 {
+  0% {
+    stroke: #e35b0b;
+  }
+  20% {
+    stroke: #e98b7a;
+  }
+  40% {
+    stroke: #d3c185;
+  }
+  60% {
+    stroke: #f8efa1;
+  }
+  80% {
+    stroke: #fa988f;
+  }
+  100% {
+    stroke: rgb(236, 204, 187);
+  }
+}
+@keyframes colorLine-3 {
+  0% {
+    stroke: #72ddff;
+  }
+  20% {
+    stroke: #80eedf;
+  }
+  40% {
+    stroke: #5b8fff;
+  }
+  60% {
+    stroke: #6194f3;
+  }
+  80% {
+    stroke: #a6b3fd;
+  }
+  100% {
+    stroke: #C2ECFE;
+  }
+}
+@media (max-width: 1200px) {
+  .steps-road-map__row-road {
+    display: none;
+  }
+  .road-map__image {
+    transform: translateX(11%);
+    top: -100px;
+  }
+  .road-map__image img {
+    max-width: 70%;
+  }
+  .road-map__steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-top: 650px;
+  }
+  .steps-road-map__row:nth-child(3) {
+    top: 0;
+  }
+  .steps-road-map__row:nth-child(4) {
+    grid-column-start: 2;
+    right: 0;
+    margin-top: 0;
+    justify-content: center;
+  }
+  .steps-road-map__title span:after {
+    display: none;
+  }
+  .steps-road-map__row::before {
+    display: none;
+  }
+  .steps-road-map__row.active {
+    animation-delay: 1.2s;
+  }
+  .steps-road-map__row:nth-child(1) .steps-road-map__row-item {
+    width: 280px;
+  }
+  .steps-road-map__row:nth-child(3) .steps-road-map__row-item {
+    margin-left: 0;
+  }
+  .steps-road-map__row-item {
+    min-height: 300px;
+  }
+  .steps-road-map__title span:nth-child(1) {
+    font-size: 42px;
+  }
+}
+@media (max-width: 1100px) {
+  .road-map__steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 600px;
+  }
+  .road-map__steps .road-map__image {
+    transform: translateX(0%);
+  }
+}
+@media (max-width: 992px) {
+  .road-map__title {
+    font-size: clamp(50px, 21vw, 260px);
+    letter-spacing: -28px;
+  }
+}
+@media (max-width: 768px) {
+  .road-map__steps {
+    margin-top: 350px;
+    padding: 0 10px;
+  }
+}
+@media (max-width: 630px) {
+  .road-map__steps {
+    display: block;
+  }
+  .steps-road-map__row:nth-child(1) .steps-road-map__row-item {
+    width: 100%;
+  }
+  .steps-road-map__row-item {
+    width: 100%;
+  }
+  .road-map {
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 576px) {
+  .road-map__title {
+    font-size: clamp(50px, 22vw, 260px);
+    letter-spacing: -18px;
+  }
+}
+.page__join {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.join__main-background {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  top: -90%;
+  left: 0;
+  object-fit: cover;
+}
+.join__main-background img {
+  position: absolute;
+  height: 125%;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  top: 10%;
+}
+
+.join__body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.join__main-block {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.join__title {
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  animation: text 0.4s forwards;
+  visibility: hidden;
+  display: inline-block;
+  opacity: 0;
+  animation: text 0.4s forwards;
+  text-wrap: nowrap;
+  z-index: 8;
+}
+.join__title span {
+  text-align: center;
+  font-size: clamp(50px, 21vw, 150px);
+  font-family: "SweetieBubbleGum";
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -20px;
+  text-shadow: 5px -2px 0 #000, 5px 6px 0 #000, 5px 5px 0 #000, -3px -4px 0 #000, -3px 7px 0 #000;
+  transition: all 0.1s linear;
+}
+.join__title span {
+  visibility: hidden;
+}
+.join__title span:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.join__title span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.join__title span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.join__title span:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.join__title span:nth-child(5) {
+  animation-delay: 0.9s;
+}
+.join__title span:nth-child(6) {
+  animation-delay: 1s;
+}
+.join__title span:nth-child(7) {
+  animation-delay: 1.1s;
+}
+
+.join__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 230px;
+  border: 2px solid #000;
+  cursor: pointer;
+  font-weight: 900;
+  padding: 15px;
+  background-color: #fff;
+  visibility: hidden;
+  transform: translateY(-100px);
+  position: relative;
+  z-index: 7;
+}
+
+.join__button.active {
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+
+.join__button:hover {
+  transition: all linear 0.2s;
+  transform: translateY(3px);
+  box-shadow: 3px 6px var(--color-orange);
+}
+
+.join__items {
+  width: 720px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  position: relative;
+  z-index: 2;
+  animation: run 90s linear infinite;
+}
+
+.join__item {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.5s ease 0s;
+  font-size: 25px;
+  top: -250px;
+  left: -50%;
+}
+
+.join__item:nth-child(1) {
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.join__item:nth-child(2) {
+  top: calc(100% - 100px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.join__item:nth-child(3) {
+  top: 25%;
+  left: calc(100% - 48px);
+  transform: translate(-50%, -50%);
+}
+
+.join__item:nth-child(4) {
+  top: 75%;
+  left: calc(100% - 48px);
+  transform: translate(-50%, -50%);
+}
+
+.join__item:nth-child(5) {
+  top: 25%;
+  left: 48px;
+  transform: translate(-50%, -50%);
+}
+
+.join__item:nth-child(6) {
+  top: 75%;
+  left: 48px;
+  transform: translate(-50%, -50%);
+}
+
+.join__item img {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+}
+
+.join__link {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: run-2 90s linear infinite;
+  transition: all 0.5s ease;
+}
+
+.join__link img {
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.join__link:hover {
+  transform: scale(1.2);
+  transition: all 0.5s ease;
+}
+
+.join__background {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  opacity: 0.8;
+}
+
+.join__background img {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 110%;
+}
+
+@keyframes run {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+@keyframes run-2 {
+  0% {
+    rotate: 0;
+  }
+  100% {
+    rotate: -360deg;
+  }
+}
+@media (max-width: 992px) {
+  .join__items {
+    width: 520px;
+    transition: width 0.2s ease;
+  }
+  .join__link {
+    width: 140px;
+    height: 140px;
+  }
+  .join__title span {
+    font-size: 90px;
+    letter-spacing: -7px;
+  }
+  .join__button {
+    padding: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .join__items {
+    width: 350px;
+  }
+  .join__title span {
+    font-size: 70px;
+  }
+  .join__item {
+    width: 100px;
+    height: 100px;
+  }
+  .join__item:nth-child(1) {
+    top: -50px;
+  }
+  .join__item:nth-child(2) {
+    top: calc(100% - 50px);
+  }
+  .join__link {
+    width: 100px;
+    height: 100px;
+  }
+  .join__button {
+    width: 130px;
+  }
+}
+.footer {
+  position: relative;
+  background-color: #000;
+}
+
+.footer__box {
+  padding: 100px 15px 0 15px;
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 40px;
+  justify-items: center;
+  border-bottom: 2px solid #fff;
+}
+
+.footer__columns {
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__column-item {
+  font-family: "TT Trailers Trial Black";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 110%;
+  text-transform: uppercase;
+  font-size: clamp(35px, 10vw, 60px);
+  line-height: 80px;
+  color: #fff;
+  transition: all 0.15s linear;
+  text-wrap: nowrap;
+}
+
+.footer__column-item.active {
+  color: #e35b0b;
+}
+
+.footer__column-item:hover {
+  color: #e35b0b;
+  transform: scale(0.95);
+}
+
+.footer__social {
+  display: flex;
+  max-width: 300px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.footer__social-item {
+  transition: all 0.15s linear;
+  max-width: 70px;
+}
+.footer__social-item img {
+  max-width: 70px;
+}
+
+.footer__social-item:hover {
+  transform: scale(0.95);
+}
+
+.footer__bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  padding: 40px;
+}
+
+.footer__email {
+  transition: all 0.15s linear;
+  color: #fff;
+  text-shadow: 1px -1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, -1px -1px 0 #000, -1px 0px 0 #000;
+}
+
+.footer__email:hover {
+  transition: all 0.15s linear;
+  opacity: 0.7;
+}
+
+.footer__copy {
+  color: #fff;
+  text-shadow: 1px -1px 0 #000, 1px 1px 0 #000, 1px 1px 0 #000, -1px -1px 0 #000, -1px 0px 0 #000;
+}
+
+.footer__decor {
+  position: relative;
+}
+.footer__decor img {
+  width: 300px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: -60px;
+}
+.footer__decor img.active {
+  transition: transform 0.3s ease-in;
+  transform: translateY(-92%);
+}
+
+@media (max-width: 768px) {
+  .footer__top {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .footer__email img {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */
