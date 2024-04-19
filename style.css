@@ -1102,6 +1102,16 @@ textPath {
     font-size: 16px;
   }
 }
+@media (max-width: 576px) {
+    .base__item .base__item-image span {
+        font-size: 15px;
+        top: 27px;
+    }
+
+    .base__item .base__item-image img {
+        max-width: 200px;
+    }
+}
 @keyframes base-cloud {
   0% {
     opacity: 0;
