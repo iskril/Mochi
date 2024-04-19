@@ -2224,7 +2224,7 @@ textPath {
   flex: 1 1 auto;
   margin-left: -1px;
   margin-right: -1px;
-  padding: 15px 23px;
+  padding: 10px 10px;
   background-color: #fff;
   border: 2px solid #000;
   transition: box-shadow 0.15s linear;
